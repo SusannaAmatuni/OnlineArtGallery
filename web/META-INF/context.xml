@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/OnlineShopper2">
+
+
+<Resource name="jdbc/newshopper" auth="Container"
+          maxActive="100" maxIdle="30" maxWait="10000"
+          username="root" password="sesame"
+          driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://localhost:3306/newshopper?autoReconnect=true"
+          logAbandoned="true" removeAbandoned ="true"
+          removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+ 
+ 
+<!--this Realm allous authomatically update tomcat-users.xml
+  so the  new users would login before accesing accounts -->
+ 
+      <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
+        dataSourceName="jdbc/newshopper" localDataSource="true"
+        userTable="UserPass" userNameCol="Username" userCredCol="Password"
+        userRoleTable="UserRole" roleNameCol="Rolename" />
+     
+ </Context>         
+          
